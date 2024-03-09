@@ -31,6 +31,7 @@ const loadAllPost = async(quary) => {
 
                 <h1 class="ml-4 lg:ml-10 text-xl lg:text-2xl">${posts.title}</h1>
                 <p class="ml-4 w-full lg:ml-10 p-2 text-base lg:text-lg">${posts.description}</p>
+                <hr/>
                 <div class="ml-4 lg:ml-10 flex w-2/3">
                     <div class="flex place-items-center lg:items-center lg:my-3">
                         <i class="fa-regular fa-comment mr-4"></i>
@@ -98,7 +99,7 @@ const readPosts = (postTitle, postView) => {
     readPost.classList.add("flex")
     readPost.innerHTML = `
             <div class="flex justify-between bg-white w-full p-2 lg:p-4 rounded-3xl m-2 lg:m-4">
-                <h1 class="lg:text-3xl w-2/3 px-2">${postTitle}</h1>
+                <h1 class="lg:text-2xl w-2/3 px-2">${postTitle}</h1>
                 <div class="flex items-center">
                     <i class=" lg:text-2xl mr-2 fa-regular fa-eye"></i>
                     <p class="lg:text-2xl">${postView}</p>
