@@ -21,7 +21,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="lg:mx-40">
+<body class="md:mx-12 lg:mx-28">
 
     <!-- header section start  -->
     <header>
@@ -38,12 +38,18 @@
                             </svg>
                         </div>
                         <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                            <li>
-                                <a><img src="./images/Frame (1).png" alt=""></a>
+                            <li class="">
+                                <a><img src="./images/Frame (1).png" alt="">Home</a>
                             </li>
-                            <li><a>Item 3</a></li>
-                            <li><a>Item 3</a></li>
-                            <li><a>Item 3</a></li>
+                            <li>
+                                <a><img src="./images/Frame.png" alt="">Edit</a>
+                            </li>
+                            <li>
+                                <a><img src="./images/Frame (2).png" alt="">Add</a>
+                            </li>
+                            <li>
+                                <a><img src="./images/Frame (3).png" alt="">Mission</a>
+                            </li>
                         </ul>
                     </div>
                     <a class="text-5xl font-extrabold">ReTro</a>
@@ -74,7 +80,7 @@
 
         <!-- banner Section code start  here-->
         <div class="bg-base-200">
-            <div class="p-2 lg:flex items-center justify-between lg:min-h-[550px] lg:p-20 bg-[#12122d] bg-[url('/images/bgbanner.png')] bg-no-repeat bg-cover rounded-2xl text-white flex-col lg:flex-row">
+            <div class="p-2 lg:flex items-center min-w-full justify-between lg:min-h-[550px] lg:p-20 bg-[#12122d] bg-[url('/images/bgbanner.png')] bg-no-repeat bg-cover rounded-2xl text-white flex-col lg:flex-row">
                 <!-- Bannner Title Text  -->
                 <div class="py-4 text-center lg:text-left">
                     <h1 class="text-3xl lg:text-5xl font-bold">Welcome to the <br> <span class="text-blue-500">ReTro</span> Forum
@@ -92,7 +98,7 @@
                 <!-- Banner Title Text Ended  -->
 
                 <!-- user service Provider Text  -->
-                <div class="card text-black text-2xl shrink-0 w-full max-w-sm shadow-2xl bg-base-100 p-10">
+                <div class="card text-black w-full  text-2xl shrink-0 lg:max-w-sm  shadow-2xl bg-base-100 p-10">
                     <div>
                         <ul class="flex justify-between">
                             <li>Registered Users</li>
@@ -118,13 +124,6 @@
                             <li>01</li>
                         </ul>
                     </div>
-
-
-
-
-
-
-
                 </div>
                 <!-- user service Provider Text  ended-->
             </div>
@@ -137,24 +136,47 @@
     <main>
 
         <section>
+
+        </section>
+
+        <section>
             <div class="">
                 <div class="my-10 mx-2 flex flex-col justify-center space-y-5">
                     <h1 class="text-2xl lg:text-4xl font-semibold text-center">Let’s Discuss</h1>
-                    <p class="text-center text-base lg:text-2xl">Yes, you can run unit tests and view the results directly within the app. The integrated testing features allow for a streamlined .</p>
+                    <p class="text-center lg:px-28 text-base lg:text-2xl">Yes, you can run unit tests and view the results directly within the app. The integrated testing features allow for a streamlined .</p>
+                </div>
+
+                <!-- loading Spiner  -->
+                <div id="loading-spiner" class="text-center my-40 hidden">
+                    <span class="loading loading-spinner loading-lg text-success"></span>
                 </div>
 
 
                 <!-- card one start -->
-                <div class="flex p-2">
+                <div class="lg:flex p-2">
                     <!-- Card Element  -->
                     <div id="post-container" class="lg:w-2/3 lg:p-5 ">
-
                     </div>
 
 
 
                     <!-- read Massage container -->
                     <div id="read-container" class="lg:w-2/3 lg:p-5">
+                        <div class="bg-slate-100 min-h-96 rounded-3xl w-full">
+                            <div class="flex justify-between p-5">
+                                <h1 class="text-3xl font-semibold ">Title</h1>
+                                <div class="flex flex-row">
+                                    <img src="./images/Frame (4).png" alt="">
+                                    <p class="text-2xl pl-2">Mark read all (<span id="countItem">0</span>)</p>
+                                </div>
+                            </div>
+                            <div id="readPostall">
+
+
+
+                            </div>
+
+                        </div>
 
                     </div>
                 </div>
@@ -162,6 +184,7 @@
 
 
         </section>
+
 
     </main>
 

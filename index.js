@@ -3,10 +3,12 @@ const loadAllPost = async(quary) => {
     const res = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts${quary}`);
     const data = await res.json();
     const posts = await data.posts
-    console.log(posts)
+    console.log(posts);
+
 
     const postContainer = document.getElementById("post-container");
     postContainer.innerHTML = ""
+
 
     posts.forEach((posts) => {
         const div = document.createElement("div");
@@ -47,7 +49,7 @@ const loadAllPost = async(quary) => {
                     </div>
 
 
-                    <button onclick="readFunction()" id="read-Unread" class="lg:my-3 cursor-pointer justify-end ml-4 lg:ml-20 p-2 rounded-full bg-green-600">
+                    <button onclick="readPosts('${posts.title}', '${posts.view_count}')" id="read-Unread" class="lg:my-3 cursor-pointer justify-end ml-4 lg:ml-20 p-2 rounded-full bg-green-600">
                         <i class="fa-solid text-white fa-envelope-circle-check"></i>
                     </button>
                 </div>
@@ -56,15 +58,65 @@ const loadAllPost = async(quary) => {
         `
         postContainer.append(div);
     })
-
+    LoadingSpener(false)
 }
 
 const handleSearch = () => {
+    LoadingSpener(true);
     const searchValue = document.getElementById("search-Box").value;
     console.log(searchValue);
     loadAllPost(`?category=${searchValue}`);
-
+    setTimeout(function() {
+        loadAllPost(`?category=${searchValue}`);
+    }, 2000)
 }
+
+
+const LoadingSpener = (isLoading) => {
+    const loadinSpener = document.getElementById("loading-spiner");
+    if (isLoading) {
+        loadinSpener.classList.remove("hidden")
+            // setTimeout(function() {
+            //     loadinSpener.classList.remove("hidden")
+            // }, 2000)
+    } else {
+        // loadinSpener.classList.add("hidden");
+        setTimeout(function() {
+            loadinSpener.classList.add("hidden")
+        }, 2000)
+    }
+}
+
+
+const readPostAll = document.getElementById("readPostall");
+
+let click = 0;
+const readPosts = (postTitle, postView) => {
+    document.addEventListener("click", clickCountMethod)
+    document.getElementById("read-container");
+    const readPost = document.createElement("div");
+    readPost.classList.add("flex")
+    readPost.innerHTML = `
+            <div class="flex justify-between bg-white w-full p-2 lg:p-4 rounded-3xl m-2 lg:m-4">
+                <h1 class="lg:text-3xl w-2/3 px-2">${postTitle}</h1>
+                <div class="flex items-center">
+                    <i class=" lg:text-2xl mr-2 fa-regular fa-eye"></i>
+                    <p class="lg:text-2xl">${postView}</p>
+                </div>
+            </div>
+    `
+    readPostAll.append(readPost);
+}
+
+let count = 1
+
+function clickCountMethod() {
+    let click = count++
+        console.log(click)
+    document.getElementById("countItem").innerText = click;
+}
+
+
 
 
 loadAllPost("")
