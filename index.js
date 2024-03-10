@@ -2,6 +2,7 @@ const loadAllPost = async(quary) => {
     console.log(quary)
     const res = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts${quary}`);
     const data = await res.json();
+    console.log(data)
     const posts = await data.posts
     console.log(posts);
 
@@ -91,9 +92,7 @@ const LoadingSpener = (isLoading) => {
 
 const readPostAll = document.getElementById("readPostall");
 
-let click = 0;
 const readPosts = (postTitle, postView) => {
-    document.addEventListener("click", clickCountMethod)
     document.getElementById("read-container");
     const readPost = document.createElement("div");
     readPost.classList.add("flex")
@@ -107,6 +106,8 @@ const readPosts = (postTitle, postView) => {
             </div>
     `
     readPostAll.append(readPost);
+
+    document.addEventListener("click", clickCountMethod)
 }
 
 let count = 1
@@ -120,4 +121,55 @@ function clickCountMethod() {
 
 
 
+
+
+
+
+const latestPosts = document.getElementById("latestPostContainer");
+
+const latestPostsAll = async() => {
+    const res = await fetch("https://openapi.programming-hero.com/api/retro-forum/latest-posts");
+    const data = await res.json();
+    console.log(data);
+    // console.log(data["latest-posts"])
+
+
+    data.forEach((latestPost) => {
+        console.log(latestPost);
+        const latestContent = document.getElementById("latestPostContainer");
+        const latestPostDiv = document.createElement("div");
+        console.log(latestPostDiv)
+
+
+        latestPostDiv.innerHTML = `
+        <div class="card bg-base-100 shadow-xl">
+                    <figure><img src="${latestPost['cover_image']}" alt="Shoes" /></figure>
+                    <div class="flex ml-4 mt-4 text-xl ">
+                        <img class="mr-2" src="./images/Frame (5).png" alt="">
+                        <p id="postDate">${latestPost.author["posted_date"]}</p>
+                    </div>
+
+                    <div class="card-body">
+                        <h2 class="card-title text-xl lg:text-2xl">${latestPost.title}</h2>
+                        <p class="text-lg lg:text-xl">${latestPost.description}</p>
+                        <div class="card-actions">
+                            <div class="h-14 w-14"><img class="rounded-full" src="${latestPost["profile_image"]}" alt=""></div>
+                            <div class="">
+                                <h1 class="text-xl lg:text-2xl font-bold">Cameron Williamson</h1>
+                                <p>${latestPost.author.designation}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        `
+
+        latestContent.append(latestPostDiv)
+    })
+
+}
+
+
+
+
 loadAllPost("")
+latestPostsAll()
