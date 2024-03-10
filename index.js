@@ -147,7 +147,7 @@ const latestPostsAll = async() => {
                     <figure><img src="${latestPost['cover_image']}" alt="Shoes" /></figure>
                     <div class="flex ml-4 mt-4 text-xl ">
                         <img class="mr-2" src="./images/Frame (5).png" alt="">
-                        <p id="postDate">${latestPost.author["posted_date"]}</p>
+                        <p id="postDate">${latestPost.author["posted_date"]?latestPost.author["posted_date"]:"Not a publish"}</p>
                     </div>
 
                     <div class="card-body">
@@ -157,7 +157,7 @@ const latestPostsAll = async() => {
                             <div class="h-14 w-14"><img class="rounded-full" src="${latestPost["profile_image"]}" alt=""></div>
                             <div class="">
                                 <h1 class="text-xl lg:text-2xl font-bold">Cameron Williamson</h1>
-                                <p>${latestPost.author.designation}</p>
+                                <p>${latestPost.author.designation?latestPost.author.designation:"Unknown"}</p>
                             </div>
                         </div>
                     </div>
