@@ -13,12 +13,14 @@ const loadAllPost = async(quary) => {
 
     posts.forEach((posts) => {
 
+
+
         const div = document.createElement("div");
         div.innerHTML = `
 
         <div class="flex items-center bg-slate-200 my-2 lg:my-4 border-2 border-gray-500 rounded-3xl lg:w-full lg:p-5">
-            <div id="indicator" class="indicator p-2">
-                <span id="status" class="indicator-item badge badge-secondary"></span>
+            <div id="indicator" class=" p-2 relative">
+                <div class='w-5 justify-end h-5 rounded-full absolute ${posts.isActive?"bg-green-500":"bg-red-500"}'></div>
                 <div class="grid w-14 h-14 lg:w-32 lg:h-32 bg-base-300 place-items-center">
                     <figure><img class="lg:rounded-3xl" src="${posts.image}" alt="Shoes" /> </figure>
                 </div>
